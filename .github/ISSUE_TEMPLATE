@@ -1,0 +1,51 @@
+# Related Safe Addresses
+
+<!--
+Provide a list of Safe addresses that would currently receive a SAFE user allocation.
+
+The list must contain at least 10 eligible Safe addresses at the time of review or it will not be considered. 
+The eligible address list can be found here: `safe_user_allocations_reworked.csv` 
+Reports will be evaluated on a first-come, first-serve basis.
+
+Example:
+```
+0x0000000000000000000000000000000000000001
+0x0000000000000000000000000000000000000002
+0x0000000000000000000000000000000000000003
+0x0000000000000000000000000000000000000004
+```
+-->
+
+# Reasoning
+
+<!--
+Describe how the Safe addresses are related with as much detail as possible.
+
+Example:
+
+After setup, each Safe received 0.1 ETH within 5 minutes. Between 1:30pm UTC and 1:40pm UTC on 2022-06-29, they all transferred 0.05 ETH to an owner account, wrapped the remaining ETH into WETH, made a trade on Uniswap WETH->DAI and back DAI->WETH before transferring out the WETH to the same account.
+-->
+
+# Methodology
+
+<!--
+Explain the method used to discover the addresses and provide proof that they are all related and likely operated by a single individual/entity with a high degree of probability. The methodology should be easy to verify or the report will not be considered. Please, also include links to any additional materials you’d like to provide like a github repo containing the script used to uncover the reported addresses.
+
+Example:
+
+The reported addresses were discovered by checking irregularities in the number of Safe transactions made via Dune. Based on the resulting list of Safes, a dataset was built that categorized each Safe transaction. Based on that, an algorithm was used to identify repeating patterns in the order of those interactions.
+
+https://dune.com/queries/0123456
+https://github.com/my-saf-analyzer
+-->
+
+# Safe Address
+
+<!--
+Please provide a Safe address or ENS name of a Mainnet Safe that will receive any rewards earned from this submission.
+
+Example:
+`0x0000000000000000000000000000000000000005`
+-->
+
+
