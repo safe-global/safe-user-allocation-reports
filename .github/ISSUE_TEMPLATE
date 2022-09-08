@@ -19,7 +19,7 @@ Example:
 # Reasoning
 
 <!--
-Describe how the Safe addresses are related with as much detail as possible.
+Describe how the Safe addresses are related to airdrop farming and if applicable also to each other with as much detail as possible.
 
 Example:
 
@@ -42,7 +42,7 @@ https://github.com/my-saf-analyzer
 # Safe Address
 
 <!--
-Please provide a Safe address or ENS name of a Mainnet Safe that will receive any rewards earned from this submission.
+Please provide a Safe address or ENS name of a Mainnet Safe that will receive any potential rewards earned from this submission.
 
 Example:
 `0x0000000000000000000000000000000000000005`
