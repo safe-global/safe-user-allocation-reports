@@ -21,7 +21,7 @@ valid_reports = pd.read_csv('valid_reports.csv', index_col=0)
 current.reset_index()
 for index, row in current.iterrows():
     if index in allocations.index:
-        allocations.drop(index)
+        allocations = allocations.drop(index)
         new_valid_report = pd.DataFrame([[github_issue, reward_safe_address]], columns=['github_issue', 'rewards_safe_address'], index=[index])
         valid_reports = pd.concat([valid_reports, new_valid_report], axis=0)
     else:
@@ -29,4 +29,4 @@ for index, row in current.iterrows():
 
 valid_reports.index.name = 'safe_address'
 valid_reports.to_csv('valid_reports.csv', sep=',')
-allocations.to_csv('../safe_user_allocations_reworked.csv', sep=',')
+allocations.to_csv('../safe_user_allocations_reworked.csv', sep=',', float_format='%.0f')
