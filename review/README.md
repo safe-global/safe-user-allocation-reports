@@ -7,6 +7,7 @@
 
 ## Review procedure
 
+- Go through open issues oldest to newest.
 - When starting to review a report, pls assing it to you so there's no one else doing it currently.
 - Has this report been put in after the deadline? - Put the `Submitted after deadline` label on it.
 - Is this report unreadable or missing information? - Close report, mark as `Invalid` and mention `This report does not meet the quality requirements.` or sth. similar explaning the reaonsing.
@@ -29,6 +30,6 @@ This step is not formalized, depends on the report.
   - Put the safes in `current.csv`
   - Double check that the provided reward address is actually a Safe.
   - Run `add_valid_report.py <github_issue_number> <reward_safes_address>`. This updates all required csvs.
-  - Push to main so repo gets updated.
+  - Push to main so repo gets updated. Mention in the commit message the issue number. sth. like `Updating csvs via #<issue_number>`
 
 After your are done with a report, unassign yourself again. 
