@@ -2,7 +2,7 @@ import pandas as pd
 import sys
 
 github_issue = int(sys.argv[1])
-if github_issue < 0 or > 1000:
+if github_issue < 0 or github_issue > 1000:
     print('given github issue number seems incorrect: {}'.format(github_issue))
     exit(0)
 reward_safe_address = sys.argv[2]
@@ -22,10 +22,11 @@ current.reset_index()
 for index, row in current.iterrows():
     if index in allocations.index:
         allocations.drop(index)
-        new_valid_report = pd.DataFrame([index, github_issue, reward_safe_address])
-        valid_reports = pd.concat([valid_reports, new_valid_report], axis=0, ignore_index=True)
+        new_valid_report = pd.DataFrame([[github_issue, reward_safe_address]], columns=['github_issue', 'rewards_safe_address'], index=[index])
+        valid_reports = pd.concat([valid_reports, new_valid_report], axis=0)
     else:
         print('WARNING: safe not found: {}'.format(index))
 
+valid_reports.index.name = 'safe_address'
 valid_reports.to_csv('valid_reports.csv', sep=',')
 allocations.to_csv('../safe_user_allocations_reworked.csv', sep=',')
