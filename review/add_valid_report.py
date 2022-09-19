@@ -5,17 +5,24 @@ github_issue = int(sys.argv[1])
 if github_issue < 0 or github_issue > 1000:
     print('given github issue number seems incorrect: {}'.format(github_issue))
     exit(0)
-reward_safe_address = sys.argv[2]
+reward_safe_address = sys.argv[2].lower()
 if reward_safe_address[:2] != '0x' or len(reward_safe_address) != 42:
     print('given reward_safe_address seems incorrect: {}'.format(reward_safe_address))
     exit(0)
 
 # Load current potential airdrop farming safes.
 current = pd.read_csv('current.csv', index_col=0)
+current.index = current.index.str.lower()
+
 # Load current allocations
 allocations = pd.read_csv('../safe_user_allocations_reworked.csv', index_col=0)
+allocations.index = allocations.index.str.lower()
+
 # Load valid reports
 valid_reports = pd.read_csv('valid_reports.csv', index_col=0)
+valid_reports.index = valid_reports.index.str.lower()
+valid_reports['rewards_safe_address'] = valid_reports['rewards_safe_address'].str.lower()
+
 
 # Go through current and drop all safes in allocations that fit.
 current.reset_index()

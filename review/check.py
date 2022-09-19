@@ -4,8 +4,11 @@ import pandas as pd
 
 # Load current potential airdrop farming safes.
 current = pd.read_csv('current.csv', index_col=0)
+current.index = current.index.str.lower()
+
 # Load current allocations
 allocations = pd.read_csv('../safe_user_allocations_reworked.csv', index_col=0)
+allocations.index = allocations.index.str.lower()
 
 # List to collect safes already removed.
 already_removed = []
