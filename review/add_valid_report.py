@@ -21,6 +21,9 @@ valid_reports = pd.read_csv('valid_reports.csv', index_col=0)
 current.reset_index()
 for index, row in current.iterrows():
     if index in allocations.index:
+        tokens = allocations.loc[index]['tokens']
+        if tokens > 1000:
+            print('WARNING: safe with many tokens will be eliminated: {}:{}'.format(index, tokens))
         allocations = allocations.drop(index)
         new_valid_report = pd.DataFrame([[github_issue, reward_safe_address]], columns=['github_issue', 'rewards_safe_address'], index=[index])
         valid_reports = pd.concat([valid_reports, new_valid_report], axis=0)
