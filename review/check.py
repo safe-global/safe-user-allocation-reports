@@ -13,6 +13,9 @@ PRINT_ALLOCATIONS = False if len(sys.argv) == 1 or sys.argv[1] != 'a' else True
 allocations = pd.read_csv('../safe_user_allocations_reworked.csv', index_col=0)
 allocations.index = allocations.index.str.lower()
 
+# Load tx info
+safe_txs = pd.read_csv('safe_transactions.csv', index_col=0)
+
 # List to collect safes already removed.
 already_removed = []
 # List to collect safes in current.csv that still have an allocation
@@ -24,7 +27,8 @@ for index, row in current.iterrows():
     if index in allocations.index:
         if PRINT_ALLOCATIONS:
             tokens = allocations.loc[index]['tokens']
-            print('{},{}'.format(index, tokens))
+            txs = safe_txs.loc[index]['safe_transactions']
+            print('{},{},{}'.format(index, tokens, txs))
         else:
             print(index)
         available.append(index)
