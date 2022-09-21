@@ -34,6 +34,7 @@ for index, row in current.iterrows():
             print('{},{},{}'.format(index, tokens, txs))
         else:
             print(index)
+            # print("'\\{}',".format(index[1:]))  # for dune
         available.append(index)
     else:
         already_removed.append(index)
