@@ -27,7 +27,10 @@ for index, row in current.iterrows():
     if index in allocations.index:
         if PRINT_ALLOCATIONS:
             tokens = allocations.loc[index]['tokens']
-            txs = safe_txs.loc[index]['safe_transactions']
+            try:
+                txs = safe_txs.loc[index]['safe_transactions']
+            except KeyError:
+                txs = 0
             print('{},{},{}'.format(index, tokens, txs))
         else:
             print(index)
