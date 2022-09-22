@@ -15,7 +15,7 @@
 ### Check if the Safes have been reported before.
 
 - Put them into `current.csv`
-- Run `python check.py`
+- Run `python check.py` or `python check.py a` to also see allocations and number of txs.
 - If all Safes have been reported before -> Mention on issue, close it and mark as `Invalid`
 
 ### Actual checks for valid report.
@@ -33,3 +33,7 @@ This step is not formalized, depends on the report.
   - Push to main so repo gets updated. Mention in the commit message the issue number. sth. like `Updating csvs via #<issue_number>`
 
 After your are done with a report, unassign yourself again. 
+
+## Print statistics
+
+Use `python stats.py` to print out stats on the valid reports.
