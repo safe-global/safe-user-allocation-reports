@@ -13,6 +13,10 @@ PRINT_ALLOCATIONS = False if len(sys.argv) == 1 or sys.argv[1] != 'a' else True
 allocations = pd.read_csv('../safe_user_allocations_reworked.csv', index_col=0)
 allocations.index = allocations.index.str.lower()
 
+# Load valid_reports
+reports = pd.read_csv('valid_reports.csv', index_col=0)
+reports.index = reports.index.str.lower()
+
 # Load tx info
 safe_txs = pd.read_csv('safe_transactions.csv', index_col=0)
 
@@ -38,6 +42,7 @@ for index, row in current.iterrows():
         available.append(index)
     else:
         already_removed.append(index)
+        # print('removed in {}'.format(reports.loc[index]['github_issue']))
 
 print('{}/{} already removed.'.format(len(already_removed), len(current)))
 print('{}/{} still available. (printed out above)'.format(len(available), len(current)))

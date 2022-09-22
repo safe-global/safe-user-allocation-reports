@@ -10,6 +10,8 @@ if reward_safe_address[:2] != '0x' or len(reward_safe_address) != 42:
     print('given reward_safe_address seems incorrect: {}'.format(reward_safe_address))
     exit(0)
 
+OVERWRITE = True if len(sys.argv) == 4 and sys.argv[3] == 'overwrite' else False
+
 # Load current potential airdrop farming safes.
 current = pd.read_csv('current.csv', index_col=0)
 current.index = current.index.str.lower()
@@ -34,6 +36,9 @@ for index, row in current.iterrows():
         allocations = allocations.drop(index)
         new_valid_report = pd.DataFrame([[github_issue, reward_safe_address]], columns=['github_issue', 'rewards_safe_address'], index=[index])
         valid_reports = pd.concat([valid_reports, new_valid_report], axis=0)
+    elif OVERWRITE and index in valid_reports.index:
+        valid_reports.loc[index, 'rewards_safe_address'] = reward_safe_address
+        valid_reports.loc[index, 'github_issue'] = github_issue
     else:
         print('WARNING: safe not found: {}'.format(index))
 
